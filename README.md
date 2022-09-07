@@ -26,8 +26,9 @@
 
 ### Technologies
 
-* Django/Python3
-* PostgreSQL
+* React
+* Redux
+* Node
 * ???
 
 ---
