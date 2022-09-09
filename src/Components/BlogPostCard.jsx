@@ -1,6 +1,6 @@
-import { connect } from "react-redux"
+// Used to display posts
 
-const BlogPostCard = () => {
+const BlogPostCard = (props) => {
   return (
     <div>
       <p>Blog Post</p>
@@ -8,4 +8,4 @@ const BlogPostCard = () => {
   )
 }
 
-export default connect()(BlogPostCard)
+export default BlogPostCard
