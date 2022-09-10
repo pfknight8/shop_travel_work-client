@@ -34,6 +34,16 @@ const BlogPostForm = () => {
             onChange={handlePostChange}
           />
         </div>
+        <div className="form-field">
+          <label htmlFor="body">Post Body: </label>
+          <textarea
+            className="post-input"
+            type="text"
+            name="body"
+            required
+            onChange={handlePostChange}
+          />
+        </div>
         <div className="btn-holder">
           <button className="post-btn" disabled={!postValues.title} type="submit">Submit</button>
         </div>

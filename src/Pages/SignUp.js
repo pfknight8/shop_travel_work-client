@@ -23,7 +23,7 @@ const SignUp = () => {
           <button type="submit">Submit</button>
           <button type="reset">Reset</button>
         </div>
-        <p className="signup-login-text">Already have an account? Login{' '}<a className="here" href="/login">here</a></p>
+        <p className="signup-login-text">Already have an account? Log in{' '}<a className="here" href="/login">here</a></p>
       </form>
     </div>
   )
