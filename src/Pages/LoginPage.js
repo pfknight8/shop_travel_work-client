@@ -27,9 +27,20 @@ const LoginPage = () => {
             onChange={handleChange}
           />
         </div>
+        <div className="login-field">
+          <label htmlFor="password">Password: </label>
+          <input
+            className="login-input"
+            type="password"
+            name="password"
+            required
+            onChange={handleChange}
+          />
+        </div>
         <div className="btn-holder">
           <button className="user-btn" disabled={!formValues.username} type="submit">Submit</button>
         </div>
+        <p className="signup-login-text">Already have an account? Sign Up{' '}<a className="here" href="/signup">here</a></p>
       </form>
     </div>
   )
