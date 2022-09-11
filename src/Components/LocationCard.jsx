@@ -1,10 +1,10 @@
 import { connect } from "react-redux"
 
-const LocationCard = (props) => {
+const LocationCard = ({location}) => {
   return (
-    <div>
-      <p>Location</p>
-      <h2>{props.name}</h2>
+    <div className="location-card">
+      <h2>{location.name}</h2>
+      <h3>{location.city}, {location.country}</h3>
     </div>
   )
 }
