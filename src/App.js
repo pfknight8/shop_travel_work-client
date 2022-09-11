@@ -1,4 +1,5 @@
 import { Route, Routes } from 'react-router-dom'
+import { useEffect } from 'react';
 import HeaderNav from './Components/HeaderNav';
 import Home from './Pages/Home';
 import Profile from './Pages/Profile';
@@ -11,8 +12,24 @@ import ItemDetails from './Pages/ItemDetails';
 import './Styles/App.css';
 
 import BlogPostForm from './Components/BlogPostForm';
+import { CheckLogin } from './Services/auth';
 
 function App() {
+  //
+  //
+  // const checkToken = async () => {
+  //   const user = await CheckLogin()
+  //   //write user state function here
+  // }
+  // useEffect(() => {
+  //   const token = localStorage.getItem('token')
+  //   if (token && user) {
+  //     checkToken()
+  //   } else if (token && !user) {
+  //     localStorage.clear()
+  //   }
+  // }, [])
+  //
   return (
     <div className="App">
       <header className="App-header">
