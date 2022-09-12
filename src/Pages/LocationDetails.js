@@ -1,21 +1,46 @@
 import { useEffect, useState } from 'react'
+import { useSelector } from 'react-redux'
 import LocalFareCard from '../Components/LocalFareCard'
 import ItemCard from '../Components/ItemCard'
 import Client from '../Services/api'
 
-const LocationDetails = ({ location }) => {
-  const [localBlogPosts, setLocalBlogPosts] = useState({})
-  const [localFares, setLocalFares] = useState({})
-  const [localItems, setLocalItems] = useState({})
+const LocationDetails = () => {
+  const location = useSelector(state => state.locations.location)
+  const [localBlogPosts, setLocalBlogPosts] = useState([])
+  const [localFares, setLocalFares] = useState([])
+  const [localItems, setLocalItems] = useState([])
 
   const handleLocalFares = async (location) => {
     let locationId = location.id
-    let localfares = await Client.get(`/api/localfare/${locationId}`)
+    try{
+      let res = await Client.get(`/api/localfare/${locationId}`)
+      console.log(res.data)
+    } catch (error) {
+      throw error
+    }
+  }
+  const handleLocalItems = async (location) => {
+    let locationId = location.id
+    try{
+      let res = await Client.get(`/api/localfare/${locationId}`)
+      console.log(res.data)
+    } catch (error) {
+      throw error
+    }
+  }
+  const handleLocalPosts = async (location) => {
+    let locationId = location.id
+    try{
+      let res = await Client.get(`/api/localfare/${locationId}`)
+      console.log(res.data)
+    } catch (error) {
+      throw error
+    }
   }
 
   useEffect(() => {
     //
-    handleLocalFares()
+    handleLocalFares(location)
   }, [])
 
   return (

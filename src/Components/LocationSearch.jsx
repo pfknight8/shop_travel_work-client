@@ -1,7 +1,7 @@
 // Will be the search bar or form used to search locations.
 const LocationSearch = ({ searchKeys, setSearchKeys }) => {
   //
-  let countryList = [{name: 'United States of America', shortname: 'USA'}, {name: 'Canada', shortname: 'Canada'}]
+  let countryList = [{id: 196, name: 'United States of America', shortname: 'USA'}, {id: 197, name: 'Canada', shortname: 'Canada'}]
   const handleFormChange = (e) => {
     setSearchKeys({...searchKeys, [e.target.name]: e.target.value})
   }
@@ -25,7 +25,7 @@ const LocationSearch = ({ searchKeys, setSearchKeys }) => {
           <label htmlFor="country">Country: </label>
           <select className="search-select" name="country">
             {countryList.map((country, index) => (
-              <option aria-label="country">{country.name}</option>
+              <option key={country.id} aria-label="country">{country.name}</option>
             ))}
           </select>
         </div>
