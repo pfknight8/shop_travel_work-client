@@ -1,10 +1,14 @@
 import { useState } from "react"
 import { useNavigate } from "react-router-dom"
+import { useSelector, useDispatch } from "react-redux"
+import { getUser } from "../store/reducers/userSlice"
 import { LoginUser } from "../Services/auth"
+import Client from "../Services/api"
 
 const LoginPage = () => {
   let initialFormState = {}
   const [formValues, setFormValues] = useState(initialFormState)
+  const dispatch = useDispatch()
 
   const handleChange = (e) => {
     setFormValues({ ...formValues, [e.target.name]: e.target.value })
@@ -12,9 +16,10 @@ const LoginPage = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    console.log(formValues)
-    const payload = await LoginUser(formValues)
-    console.log(payload)
+    console.log(formValues.username)
+    let payload = await LoginUser(formValues)
+    let userDetail = await Client.get(`/api/users/${formValues.username}`)
+    dispatch(getUser(userDetail.data))
   }
 
   return (

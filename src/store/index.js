@@ -7,14 +7,14 @@
 
 import { configureStore } from '@reduxjs/toolkit'
 import locationReducer from './reducers/locationSlice'
-import usersReducer from './reducers/usersSlice'
+import userReducer from './reducers/userSlice'
 import blogPostsReducer from './reducers/blogPostsSlice'
 import authReducer from './reducers/authSlice'
 
 const store = configureStore({
   reducer: {
     locations: locationReducer,
-    users: usersReducer,
+    user: userReducer,
     auth: authReducer,
     blogPosts: blogPostsReducer
   }

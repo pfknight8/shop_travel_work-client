@@ -1,12 +1,13 @@
 import { NavLink } from "react-router-dom"
 import { useSelector } from "react-redux"
+import { LogOut } from "../Services/auth"
 
 const HeaderNav = ({user}) => {
 
   let userBtnOpt
   if (user) {
     userBtnOpt = (
-      <NavLink to="/">Log Out</NavLink>
+      <NavLink to="/" onClick={LogOut}>Log Out</NavLink>
     )
   } else {
     userBtnOpt = (
