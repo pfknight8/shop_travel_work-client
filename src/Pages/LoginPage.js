@@ -1,4 +1,6 @@
 import { useState } from "react"
+import { useNavigate } from "react-router-dom"
+import { LoginUser } from "../Services/auth"
 
 const LoginPage = () => {
   let initialFormState = {}
@@ -8,9 +10,11 @@ const LoginPage = () => {
     setFormValues({ ...formValues, [e.target.name]: e.target.value })
   }
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
-    console.log("Will submit, eventually...")
+    console.log(formValues)
+    const payload = await LoginUser(formValues)
+    console.log(payload)
   }
 
   return (

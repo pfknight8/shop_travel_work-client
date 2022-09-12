@@ -20,6 +20,7 @@ const SignUp = () => {
     } catch (error) {
       throw error
     }
+    // Need to write navigate logic; only if succeeded to create a new user.
   }
   const handleReset = () => {
     setFormValues(initalFormState)
