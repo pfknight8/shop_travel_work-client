@@ -22,7 +22,7 @@ Client.interceptors.response.use(response => response, error => {
     const refreshToken = localStorage.getItem('refresh')
     let accessToken
     if (refreshToken) {
-      const tokenPieces = JSON.parst(atob(refreshToken.split('.')[1]))
+      const tokenPieces = JSON.parse(atob(refreshToken.split('.')[1]))
       const now = Math.ceil(Date.now()/1000)
       if (tokenPieces.exp > now) {
         return Client.post('/api/token/refresh', {refresh: refreshToken}).then((res) => {

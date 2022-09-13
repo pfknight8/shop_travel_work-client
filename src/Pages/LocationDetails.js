@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
 import LocalFareCard from '../Components/LocalFareCard'
 import ItemCard from '../Components/ItemCard'
+import BlogPostCard from '../Components/BlogPostCard'
 import Client from '../Services/api'
 
 const LocationDetails = () => {
@@ -11,36 +12,38 @@ const LocationDetails = () => {
   const [localItems, setLocalItems] = useState([])
 
   const handleLocalFares = async (location) => {
-    let locationId = location.id
+    let localfaresArr = location.localfares
     try{
-      let res = await Client.get(`/api/localfare/${locationId}`)
-      console.log(res.data)
+      let res = await Client.get(`/api/localfare?${localfaresArr.map((n) => `id=${n}`).join('&')}`)
+      setLocalFares(res.data)
     } catch (error) {
       throw error
     }
   }
   const handleLocalItems = async (location) => {
-    let locationId = location.id
+    let localitemsArr = location.localitems
     try{
-      let res = await Client.get(`/api/localfare/${locationId}`)
-      console.log(res.data)
+      let res = await Client.get(`/api/localitems?${localitemsArr.map((n) => `id=${n}`).join('&')}`)
+      setLocalItems(res.data)
     } catch (error) {
       throw error
     }
   }
   const handleLocalPosts = async (location) => {
-    let locationId = location.id
+    let locationPostsArr = location.locationposts
     try{
-      let res = await Client.get(`/api/localfare/${locationId}`)
+      let res = await Client.get(`/api/locations/posts?${locationPostsArr.map((n) => `id=${n}`).join('&')}`)
       console.log(res.data)
+      setLocalBlogPosts(res.data)
     } catch (error) {
       throw error
     }
   }
 
   useEffect(() => {
-    //
     handleLocalFares(location)
+    handleLocalItems(location)
+    handleLocalPosts(location)
   }, [])
 
   return (
@@ -50,9 +53,9 @@ const LocationDetails = () => {
         <p>Place the main content of a detail here</p>
       </section>
       <section id="location-posts">
-        <p>place the localfare cards here</p>
+        <p>place the localpost cards here</p>
         {localBlogPosts?.map((fare, index) => (
-          <LocalFareCard key={fare.id} localFare={fare} />
+          <BlogPostCard key={fare.id} localFare={fare} />
         ))}
       </section>
       <section id="location-fare">

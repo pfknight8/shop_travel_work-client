@@ -16,7 +16,6 @@ const LoginPage = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    console.log(formValues.username)
     let payload = await LoginUser(formValues)
     let userDetail = await Client.get(`/api/users/${formValues.username}`)
     dispatch(getUser(userDetail.data))
