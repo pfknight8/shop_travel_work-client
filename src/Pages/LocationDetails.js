@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react'
-import { useSelector } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
+import { useSelector, useDispatch } from 'react-redux'
+import { getObj } from '../store/reducers/localObjSlice'
 import LocalFareCard from '../Components/LocalFareCard'
 import ItemCard from '../Components/ItemCard'
 import BlogPostCard from '../Components/BlogPostCard'
@@ -10,30 +12,31 @@ const LocationDetails = () => {
   const [localBlogPosts, setLocalBlogPosts] = useState([])
   const [localFares, setLocalFares] = useState([])
   const [localItems, setLocalItems] = useState([])
+  const navigate = useNavigate()
+  const dispatch = useDispatch()
 
   const handleLocalFares = async (location) => {
-    let localfaresArr = location.localfares
+    setLocalFares([])
     try{
-      let res = await Client.get(`/api/localfare?${localfaresArr.map((n) => `id=${n}`).join('&')}`)
+      let res = await Client.get(`/api/localfare?id=${location.id}`)
       setLocalFares(res.data)
     } catch (error) {
       throw error
     }
   }
   const handleLocalItems = async (location) => {
-    let localitemsArr = location.localitems
+    setLocalItems([])
     try{
-      let res = await Client.get(`/api/localitems?${localitemsArr.map((n) => `id=${n}`).join('&')}`)
+      let res = await Client.get(`/api/localitem?id=${location.id}`)
       setLocalItems(res.data)
     } catch (error) {
       throw error
     }
   }
   const handleLocalPosts = async (location) => {
-    let locationPostsArr = location.locationposts
+    setLocalBlogPosts([])
     try{
-      let res = await Client.get(`/api/locations/posts?${locationPostsArr.map((n) => `id=${n}`).join('&')}`)
-      console.log(res.data)
+      let res = await Client.get(`/api/locations/posts?id=${location.id}`)
       setLocalBlogPosts(res.data)
     } catch (error) {
       throw error
@@ -46,6 +49,11 @@ const LocationDetails = () => {
     handleLocalPosts(location)
   }, [])
 
+  const handleSelection = (urlText, obj) => {
+    dispatch(getObj(obj))
+    navigate(`/${urlText}/${obj.id}`)
+  }
+
   return (
     <div>
       <p>The details page for locations</p>
@@ -55,19 +63,19 @@ const LocationDetails = () => {
       <section id="location-posts">
         <p>place the localpost cards here</p>
         {localBlogPosts?.map((blogPost, index) => (
-          <BlogPostCard key={blogPost.id} blogPost={blogPost} />
+          <BlogPostCard key={blogPost.id} blogPost={blogPost} handleSelection={() => handleSelection('locations/posts', blogPost)} />
         ))}
       </section>
       <section id="location-fare">
         <p>place the localfare cards here</p>
         {localFares?.map((fare, index) => (
-          <LocalFareCard key={fare.id} localFare={fare} />
+          <LocalFareCard key={fare.id} localFare={fare} handleSelection={() => handleSelection('localfare', fare)}/>
         ))}
       </section>
       <section id="location-item">
         <p>Place the local items here</p>
         {localItems?.map((item, index) => (
-          <ItemCard key={item.id} localItem={item} />
+          <ItemCard key={item.id} localItem={item} handleSelection={() => handleSelection('localitem', item)}/>
         ))}
       </section>
     </div>

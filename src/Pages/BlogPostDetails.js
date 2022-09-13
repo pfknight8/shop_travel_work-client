@@ -1,18 +1,12 @@
 import { useSelector } from "react-redux"
-import { selectBlogPostById } from "../store/reducers/blogPostsSlice"
 
-const BlogPostDetails = ({ match }) => {
-  let { blogPostId } = match.params
-  let blogPost = useSelector(state => selectBlogPostById(state, blogPostId))
+const BlogPostDetails = () => {
+  const blogPost = useSelector(state => state.localObj.localObj)
 
-  return !blogPost ? (
+  return (
     <div>
+      <h2>{blogPost.title}</h2>
       <p>View the contents of a post here</p>
-    </div>
-  ) : (
-    <div>
-      <p>A post was found, finish building the app!</p>
-      <p>{blogPost.id}</p>
     </div>
   )
 }

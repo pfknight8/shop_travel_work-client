@@ -17,7 +17,6 @@ const Home = (props) => {
   const handleGetLocations = async (e) => {
     e.preventDefault()
     let res = await Client.get('/api/locations')
-    console.log(res.data)
     setLocations(res.data)
   }
 
@@ -29,7 +28,7 @@ const Home = (props) => {
   return (
     <div>
       <h1>Shop - Travel - Work</h1>
-      <LocationSearch searchKeys={searchKeys} setSearchKeys={setSearchKeys} />
+      {/* <LocationSearch searchKeys={searchKeys} setSearchKeys={setSearchKeys} /> */}
       <button onClick={handleGetLocations}>Get Locations</button>
       {locations?.map((location, index) => (
         <LocationCard

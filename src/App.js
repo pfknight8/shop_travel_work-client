@@ -1,5 +1,8 @@
 import { Route, Routes } from 'react-router-dom'
 import { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { getUser } from './store/reducers/userSlice';
 import HeaderNav from './Components/HeaderNav';
 import Home from './Pages/Home';
 import Profile from './Pages/Profile';
@@ -16,26 +19,29 @@ import { CheckLogin } from './Services/auth';
 
 function App() {
   //
-  //
-  // const checkToken = async () => {
-  //   const user = await CheckLogin()
-  //   //write user state function here
-  // }
+  const navigate = useNavigate()
+  const dispatch = useDispatch()
   // useEffect(() => {
-  //   const token = localStorage.getItem('token')
-  //   if (token && user) {
-  //     checkToken()
-  //   } else if (token && !user) {
-  //     localStorage.clear()
+  //   let resp = CheckLogin()
+  //   if (!resp.code) {
+  //     //
+  //   } else if (resp.code === "token_not_valid") {
+  //     alert("testing not signed in")
   //   }
   // }, [])
-  //
+
+  const LogOut = () => {
+    localStorage.clear()
+    dispatch(getUser(""))
+    navigate('/')
+  }
+  
   return (
     <div className="App">
-      <header className="App-header sticky-head">
+      <header className="App-header">
         <HeaderNav />
       </header>
-      <main>
+      <main className='App-body'>
         <Routes>
           <Route path="/" element={ <Home /> } />
           <Route path="/signup" element={ <SignUp /> } />

@@ -3,9 +3,11 @@ import { useSelector } from "react-redux"
 import { LogOut } from "../Services/auth"
 
 const HeaderNav = ({user}) => {
-
+  // temporary**
+  let userin=localStorage.getItem('token')
+  // temporary**
   let userBtnOpt
-  if (user) {
+  if (userin) {
     userBtnOpt = (
       <NavLink to="/" onClick={LogOut}>Log Out</NavLink>
     )
@@ -16,15 +18,15 @@ const HeaderNav = ({user}) => {
   }
 
   return (
-    <div>
-      <p>Navigation & Header</p>
-      <NavLink to="/">Home</NavLink>
+    <div className="header-nav">
+      <NavLink to="/">Shop-Travel-Work</NavLink>
       <NavLink to="/profile">Profile</NavLink>
       <NavLink to="/signup">Sign Up</NavLink>
-      <p>Will wrap login/logout and profile/signup in ternaries to display depending on if a user is logged in or not</p>
       {userBtnOpt}
     </div>
   )
 }
 
 export default HeaderNav
+
+//Will wrap login/logout and profile/signup in ternaries to display depending on if a user is logged in or not

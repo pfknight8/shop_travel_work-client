@@ -1,7 +1,7 @@
-const ItemCard = ({localItem}) => {
+const ItemCard = ({localItem, handleSelection}) => {
   return (
     <div className="item-card">
-      <h3>{localItem.name}</h3>
+      <h3 onClick={handleSelection}>{localItem.name}</h3>
     </div>
   )
 }

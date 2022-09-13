@@ -1,7 +1,14 @@
+import { useSelector } from "react-redux"
+
 const ItemDetails = () => {
-  return (
+  let localItem = useSelector(state => state.localObj.localObj)
+  return localItem && (
     <div>
-      <p>The details page for local items</p>
+      <h2>{localItem.name}</h2>
+      <p>{localItem.description}</p>
+      <h3>{localItem.store}</h3>
+      <p>{localItem?.store_url}</p>
+      <p>Postetd by: {localItem.user}</p>
     </div>
   )
 }
