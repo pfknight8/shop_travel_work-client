@@ -54,8 +54,8 @@ const LocationDetails = () => {
       </section>
       <section id="location-posts">
         <p>place the localpost cards here</p>
-        {localBlogPosts?.map((fare, index) => (
-          <BlogPostCard key={fare.id} localFare={fare} />
+        {localBlogPosts?.map((blogPost, index) => (
+          <BlogPostCard key={blogPost.id} blogPost={blogPost} />
         ))}
       </section>
       <section id="location-fare">

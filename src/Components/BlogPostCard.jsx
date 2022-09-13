@@ -1,9 +1,10 @@
 // Used to display posts
 
-const BlogPostCard = (props) => {
+const BlogPostCard = ({blogPost}) => {
   return (
-    <div>
-      <p>Blog Post</p>
+    <div className="post-card">
+      <h3>{blogPost.title}</h3>
+      <h4>{blogPost.user}</h4>
     </div>
   )
 }

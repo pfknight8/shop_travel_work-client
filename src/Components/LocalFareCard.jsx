@@ -1,11 +1,11 @@
-import { connect } from "react-redux"
-
-const LocalFareCard = () => {
+//
+const LocalFareCard = ({localFare}) => {
   return (
-    <div>
-      <p>Local Fare</p>
+    <div className="fare-card">
+      <h3>{localFare.name}</h3>
+      <h4>{localFare.establishment}</h4>
     </div>
   )
 }
 
-export default connect()(LocalFareCard)
+export default LocalFareCard

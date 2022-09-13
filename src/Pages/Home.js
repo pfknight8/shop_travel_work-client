@@ -5,6 +5,7 @@ import { getLocation } from "../store/reducers/locationSlice"
 import LocationSearch from "../Components/LocationSearch"
 import LocationCard from "../Components/LocationCard"
 import Client from "../Services/api"
+import '../Styles/Home.css'
 
 const Home = (props) => {
   const [searchKeys, setSearchKeys] = useState({})

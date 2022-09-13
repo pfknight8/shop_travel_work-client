@@ -1,0 +1,14 @@
+.fare-card {
+  margin: 10px;
+  border: black solid 1px;
+}
+
+.item-card {
+  margin: 10px;
+  border: green solid 1px;
+}
+
+.post-card {
+  margin: 10px;
+  border: blue solid 1px;
+}

@@ -8,6 +8,7 @@ import Client from "../Services/api"
 const LoginPage = () => {
   let initialFormState = {}
   const [formValues, setFormValues] = useState(initialFormState)
+  const navigate = useNavigate()
   const dispatch = useDispatch()
 
   const handleChange = (e) => {
@@ -19,6 +20,7 @@ const LoginPage = () => {
     let payload = await LoginUser(formValues)
     let userDetail = await Client.get(`/api/users/${formValues.username}`)
     dispatch(getUser(userDetail.data))
+    navigate('/')
   }
 
   return (

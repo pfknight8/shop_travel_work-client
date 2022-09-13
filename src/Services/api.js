@@ -20,7 +20,6 @@ Client.interceptors.response.use(response => response, error => {
   const originalRes = error.config
   if (error.response.status === 401 && error.response.data.code === "token_not_valid") {
     const refreshToken = localStorage.getItem('refresh')
-    let accessToken
     if (refreshToken) {
       const tokenPieces = JSON.parse(atob(refreshToken.split('.')[1]))
       const now = Math.ceil(Date.now()/1000)
@@ -33,10 +32,12 @@ Client.interceptors.response.use(response => response, error => {
           return Client(originalRes)
         }).catch(err => {console.log(err)})
       } else {
+        localStorage.clear()
         alert("Refresh Token expired! Will need to log back in.")
       }
     } else {
       alert("No refresh token!")
+      localStorage.clear()
     }
   }
   return Promise.reject(error)

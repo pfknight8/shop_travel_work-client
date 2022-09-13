@@ -1,11 +1,9 @@
-import { connect } from "react-redux"
-
-const ItemCard = () => {
+const ItemCard = ({localItem}) => {
   return (
-    <div>
-      <p>Item</p>
+    <div className="item-card">
+      <h3>{localItem.name}</h3>
     </div>
   )
 }
 
-export default connect()(ItemCard)
+export default ItemCard
