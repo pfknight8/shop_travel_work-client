@@ -4,6 +4,8 @@
 
 ---
 
+<img alt="component hierarchy diagram" width='500' src="./public/STW_logo.png" />
+
 ## Date: 9/1/2022 - 9/14/2022
 
 ---
@@ -45,6 +47,12 @@
 #### **_Component Hierarchy_**
 
 <img alt="component hierarchy diagram" width='500' src="./public/STW_CHD.png" />
+
+#### **_Working Screenshots_**
+
+<img alt="main with locations" width='500' src="./public/STW_main_with_locations.png"/>
+
+<img alt="component hierarchy diagram" width='500' src="./public/STW-Mobile.png" />
 
 ---
 
