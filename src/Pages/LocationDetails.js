@@ -2,9 +2,12 @@ import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
 import { getObj } from '../store/reducers/localObjSlice'
-import LocalFareCard from '../Components/LocalFareCard'
-import ItemCard from '../Components/ItemCard'
 import BlogPostCard from '../Components/BlogPostCard'
+import BlogPostForm from '../Components/BlogPostForm'
+import LocalFareCard from '../Components/LocalFareCard'
+import LocalFareForm from '../Components/LocalFareForm'
+import ItemCard from '../Components/ItemCard'
+import ItemForm from '../Components/ItemForm'
 import Client from '../Services/api'
 
 const LocationDetails = () => {
@@ -15,6 +18,9 @@ const LocationDetails = () => {
   const [postBtn, togglePostBtn] = useState(false)
   const [fareBtn, toggleFareBtn] = useState(false)
   const [itemBtn, toggleItemBtn] = useState(false)
+  const [postFormBtn, togglePostFormBtn] = useState(false)
+  const [fareFormBtn, toggleFareFormBtn] = useState(false)
+  const [itemFormBtn, toggleItemFormBtn] = useState(false)
   const navigate = useNavigate()
   const dispatch = useDispatch()
 
@@ -69,6 +75,10 @@ const LocationDetails = () => {
         <div className='card-title'>
           <button className="toggle-btn" onClick={() => togglePostBtn(!postBtn)}>{postBtn ? 'v' : '>'}</button>
           <p className='title-name'>Posts</p>
+          {postBtn && (<button className='add-something' onClick={() => togglePostFormBtn(!postFormBtn)}>{postFormBtn ? 'Cancel' : 'Add Post'}</button>)}
+        </div>
+        <div className='form-holder'>
+          {postFormBtn && <BlogPostForm />}
         </div>
         {postBtn && localBlogPosts?.map((blogPost, index) => (
           <BlogPostCard key={blogPost.id} blogPost={blogPost} handleSelection={() => handleSelection('locations/posts', blogPost)} />
@@ -78,7 +88,11 @@ const LocationDetails = () => {
         <div className='card-title'>
           <button className="toggle-btn" onClick={() => toggleFareBtn(!fareBtn)}>{fareBtn ? 'v' : '>'}</button>
           <p className='title-name'>Local Fares</p>
+          {fareBtn && (<button className='add-something' onClick={() => toggleFareFormBtn(!fareFormBtn)}>{fareFormBtn ? 'Cancel' : 'Add Local Fare'}</button>)}
         </div>
+        {/* <div className='form-holder'>
+          {fareFormBtn && <LocalFareForm />}
+        </div> */}
         {fareBtn && localFares?.map((fare, index) => (
           <LocalFareCard key={fare.id} localFare={fare} handleSelection={() => handleSelection('localfare', fare)}/>
         ))}

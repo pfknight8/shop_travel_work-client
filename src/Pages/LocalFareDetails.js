@@ -1,7 +1,9 @@
+import { useState } from "react"
 import { useSelector } from "react-redux"
 
 const LocalFareDetails = () => {
   const localFare = useSelector(state => state.localObj.localObj)
+  const [fareEditBtn, toggleFareEditmBtn] = useState(false)
 
   return (
     <div>

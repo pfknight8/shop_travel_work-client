@@ -1,7 +1,9 @@
+import { useState } from "react"
 import { useSelector } from "react-redux"
 
 const BlogPostDetails = () => {
   const blogPost = useSelector(state => state.localObj.localObj)
+  const [postEditBtn, togglePostEditBtn] = useState(false)
 
   return (
     <div>
