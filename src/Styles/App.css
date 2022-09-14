@@ -27,6 +27,7 @@
 }
 
 button {
+  margin: 10px;
   border: #08201E solid 1px;
   background-color: #082321;
   color: #ECEEE8

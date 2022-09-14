@@ -84,6 +84,7 @@
 * This Lightrains [article](https://lightrains.com/blogs/axios-intercepetors-react/) on Axios interceptors
 * freeCodeCamp [article](https://www.freecodecamp.org/news/how-to-manage-state-in-a-react-app/#reduxtoolkit) on the Redux toolkit
 * This helpful [overview](https://blog.bitsrc.io/simplifying-redux-with-redux-toolkit-6236c28cdfcb) to help understand Redux toolkit
+* imgur user mihac1886 for an image
 * And of course, many visits to [stackoverflow](https://stackoverflow.com/)
 
 #### I'll also include my wife, Tara, for inspiration on choosing this project topic.

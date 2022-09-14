@@ -10,6 +10,7 @@ import '../Styles/Home.css'
 const Home = (props) => {
   const [searchKeys, setSearchKeys] = useState({})
   const [locations, setLocations] = useState([])
+  const [locationsObtained, setLocationsObtained] = useState(false)
   // let locations = [{id: 55, name: 'Mo-town', country: 'Mongolia', state_province: 'None', city: 'Xia'}]
   const navigate = useNavigate()
   const dispatch = useDispatch()
@@ -18,6 +19,7 @@ const Home = (props) => {
     e.preventDefault()
     let res = await Client.get('/api/locations')
     setLocations(res.data)
+    setLocationsObtained(true)
   }
 
   const handleLocationSelect = (location) => {
@@ -36,15 +38,21 @@ const Home = (props) => {
         {/* <img src="https://static.wixstatic.com/media/d92776_88bde6db809543d5a08df157140d175f~mv2.jpg/v1/fill/w_1878,h_1030,al_c,q_85,enc_auto/d92776_88bde6db809543d5a08df157140d175f~mv2.jpg" alt="pexels-photo-1269805"/> */}
       </div>
       <div id="locations-div">
-        {/* <LocationSearch searchKeys={searchKeys} setSearchKeys={setSearchKeys} /> */}
-        <button className="main-btn" onClick={handleGetLocations}>Get Locations</button>
-        {locations?.map((location, index) => (
-          <LocationCard
-            key={location.id}
-            location={location}
-            handleLocationSelect={() => handleLocationSelect(location)}
-          />
-        ))}
+        <div id="locations-controls">
+          {/* <LocationSearch searchKeys={searchKeys} setSearchKeys={setSearchKeys} /> */}
+          <button className="main-btn" onClick={handleGetLocations}>Get Locations</button>
+        </div>
+        <div id="locations-display">
+          {locationsObtained ? locations?.map((location, index) => (
+            <LocationCard
+              key={location.id}
+              location={location}
+              handleLocationSelect={() => handleLocationSelect(location)}
+            />
+          )) : (
+            <img id="locaitions-holderImg" src="https://i.imgur.com/69WhDUJ.jpeg" aria-label="Filler image"/>
+          )}
+        </div>
       </div>
     </div>
   )

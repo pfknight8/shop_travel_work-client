@@ -34,6 +34,10 @@
   min-height: 250px;
 }
 
+#locaitions-holderImg {
+  width: 75vw;
+}
+
 .location-card {
   padding: 10px;
   margin: 10px;
