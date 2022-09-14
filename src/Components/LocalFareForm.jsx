@@ -4,10 +4,11 @@ import { useNavigate } from "react-router-dom"
 import { useSelector } from "react-redux"
 import Client from "../Services/api"
 
-const LocalFareForm = ({ localFare, locationId }) => {
+const LocalFareForm = ({ localFare }) => {
   const initialForm = localFare
   const [formBody, setFormBody] = useState(initialForm)
   const localFareObj = useSelector(state => state.localObj.localObj)
+  let locationId = localFareObj?.location_id
   const navigate = useNavigate()
 
   const handleFormChange = (e) => {
@@ -25,7 +26,7 @@ const LocalFareForm = ({ localFare, locationId }) => {
   const handleSubmit = (e) => {
     e.preventDefault()
     formToDatabase(formBody)
-    navigate(`/locations/${locationId}`) //Should only be comming from a location page
+    navigate(`/locations/}`) //Should only be comming from a location page
   }
   const handleReset = (e) => {
     e.preventDefault()
@@ -33,7 +34,7 @@ const LocalFareForm = ({ localFare, locationId }) => {
   }
   return (
     <div>
-      <form onReset={handleReset} osSubmit={handleSubmit}>
+      <form onReset={handleReset} onSubmit={handleSubmit}>
         <div className="form-field">
           <label htmlFor="name">Name: </label>
           <input

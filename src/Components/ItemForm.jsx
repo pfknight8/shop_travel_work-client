@@ -4,10 +4,11 @@ import { useNavigate } from "react-router-dom"
 import { useSelector } from "react-redux"
 import Client from "../Services/api"
 
-const ItemForm = ({ localItem, locationId }) => {
+const ItemForm = ({ localItem}) => {
   const initialForm = localItem
   const [formBody, setFormBody] = useState(initialForm)
   const localItemObj = useSelector(state => state.localObj.localObj)
+  let locationId = localItemObj?.location_id
   const navigate = useNavigate()
 
   const handleFormChange = (e) => {

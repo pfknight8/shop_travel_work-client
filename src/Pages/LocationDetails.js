@@ -59,7 +59,7 @@ const LocationDetails = () => {
   }, [])
 
   const handleSelection = (urlText, obj) => {
-    dispatch(getObj(obj))
+    dispatch(getObj(obj)) 
     navigate(`/${urlText}/${obj.id}`)
   }
 
@@ -78,7 +78,7 @@ const LocationDetails = () => {
           {postBtn && (<button className='add-something' onClick={() => togglePostFormBtn(!postFormBtn)}>{postFormBtn ? 'Cancel' : 'Add Post'}</button>)}
         </div>
         <div className='form-holder'>
-          {postFormBtn && <BlogPostForm />}
+          {postFormBtn && <BlogPostForm blogPost={{}}/>}
         </div>
         {postBtn && localBlogPosts?.map((blogPost, index) => (
           <BlogPostCard key={blogPost.id} blogPost={blogPost} handleSelection={() => handleSelection('locations/posts', blogPost)} />
@@ -90,9 +90,9 @@ const LocationDetails = () => {
           <p className='title-name'>Local Fares</p>
           {fareBtn && (<button className='add-something' onClick={() => toggleFareFormBtn(!fareFormBtn)}>{fareFormBtn ? 'Cancel' : 'Add Local Fare'}</button>)}
         </div>
-        {/* <div className='form-holder'>
-          {fareFormBtn && <LocalFareForm />}
-        </div> */}
+        <div className='form-holder'>
+          {fareFormBtn && <LocalFareForm localFare={{}}/>}
+        </div>
         {fareBtn && localFares?.map((fare, index) => (
           <LocalFareCard key={fare.id} localFare={fare} handleSelection={() => handleSelection('localfare', fare)}/>
         ))}
@@ -101,6 +101,10 @@ const LocationDetails = () => {
         <div className='card-title'>
           <button className="toggle-btn" onClick={() => toggleItemBtn(!itemBtn)}>{itemBtn ? 'v' : '>'}</button>
           <p className='title-name'>Items Procured Locally</p>
+          {itemBtn && (<button className='add-something' onClick={() => toggleItemFormBtn(!itemFormBtn)}>{itemFormBtn ? 'Cancel' : 'Add Local Item'}</button>)}
+        </div>
+        <div className='form-holder'>
+          {itemFormBtn && <ItemForm localItem={{}} />}
         </div>
         {itemBtn && localItems?.map((item, index) => (
           <ItemCard key={item.id} localItem={item} handleSelection={() => handleSelection('localitem', item)}/>
