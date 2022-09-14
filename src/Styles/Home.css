@@ -38,23 +38,38 @@
   width: 75vw;
 }
 
+#locations-display {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
 .location-card {
   padding: 10px;
   margin: 10px;
   border: #ECEEE8 solid 1px;
+  width: 50vw;
+  min-width: 225px;
 }
 
 .fare-card {
   margin: 10px;
   border: #082321 solid 1px;
+  width: 50vw;
+  min-width: 225px;
 }
 
 .item-card {
   margin: 10px;
   border: #082321 solid 1px;
+  width: 50vw;
+  min-width: 225px;
 }
 
 .post-card {
   margin: 10px;
   border: #082321 solid 1px;
+  width: 50vw;
+  min-width: 225px;
 }

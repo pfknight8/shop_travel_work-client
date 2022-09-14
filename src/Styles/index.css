@@ -11,6 +11,11 @@ body {
   background-color: #ECEEE8;
 }
 
+footer {
+  margin-top: 50px;
+  margin-bottom: 20px;
+}
+
 a {
   margin-left: 10px;
   margin-right: 10px;

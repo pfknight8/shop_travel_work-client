@@ -52,7 +52,7 @@
 
 <img alt="main with locations" width='500' src="./public/STW_main_with_locations.png"/>
 
-<img alt="component hierarchy diagram" width='500' src="./public/STW-Mobile.png" />
+<img alt="component hierarchy diagram" width='320' src="./public/STW-Mobile.png" />
 
 ---
 

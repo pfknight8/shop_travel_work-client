@@ -59,6 +59,34 @@ p {
   margin: 10px;
 }
 
+#location-posts, #location-item, #location-fare {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.fare-card {
+  margin: 10px;
+  border: #082321 solid 1px;
+  width: 50vw;
+  min-width: 225px;
+}
+
+.item-card {
+  margin: 10px;
+  border: #082321 solid 1px;
+  width: 50vw;
+  min-width: 225px;
+}
+
+.post-card {
+  margin: 10px;
+  border: #082321 solid 1px;
+  width: 50vw;
+  min-width: 225px;
+}
+
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
