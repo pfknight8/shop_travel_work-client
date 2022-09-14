@@ -22,7 +22,7 @@ const HeaderNav = ({user}) => {
       <NavLink to="/">SHOP . TRAVEL . WORK</NavLink>
       {/* <NavLink to="/profile">Profile</NavLink> */}
       {/* <NavLink to="/signup">Sign Up</NavLink> */}
-      {/* {userBtnOpt} */}
+      {userBtnOpt}
     </div>
   )
 }

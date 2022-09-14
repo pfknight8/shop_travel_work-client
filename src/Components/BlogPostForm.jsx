@@ -8,8 +8,9 @@ import Client from "../Services/api";
 const BlogPostForm = () => {
   const initialForm = {}
   const [postValues, setPostValues] = useState({})
-  const [formBody, setFormBody] = useState({})
+  const [formBody, setFormBody] = useState(initialForm)
   const location = useSelector(state => state.locations.location)
+  const user = useSelector(state => state.user.user)
   const localPostObj = useSelector(state => state.localObj.localObj)
   
 
@@ -20,8 +21,15 @@ const BlogPostForm = () => {
   }
 
   const formToDatabase = async (formBody) => {
+    console.log(formBody)
     if (Object.keys(initialForm).length === 0) {
-      await Client.post(`/api/locations/posts` , formBody)
+      try {
+        let res = await Client.post(`/api/locations/posts` , formBody)
+        console.log(res)
+      } catch (error) {
+        alert('You must be signed in to do that!')
+        throw error
+      }
       // Is the create form
     } else {
       await Client.put(`/api/locations/posts/${localPostObj.id}`, formBody)
@@ -31,7 +39,7 @@ const BlogPostForm = () => {
 
   const handleSubmitPost = (e) => {
     e.preventDefault()
-    console.log("Will post, eventually...")
+    setFormBody({...postValues, "user_id": user.id, "location_id": location.id}) //"user": user.username, "location": location.name
     formToDatabase(formBody)
     // navigate to relevant location
   }
@@ -47,6 +55,7 @@ const BlogPostForm = () => {
             name="title"
             required
             onChange={handlePostChange}
+            defaultValue={formBody?.title}
           />
         </div>
         <div className="form-field">
