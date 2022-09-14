@@ -1,21 +1,23 @@
 //These forms will be used to enter new entries, or update existing ones.
 import { useState } from "react"
 import { useNavigate } from "react-router-dom"
+import { useSelector } from "react-redux"
 
 const LocalFareForm = ({ localFare, locationId }) => {
   const initialForm = localFare
   const [formBody, setFormBody] = useState(initialForm)
+  const localFareObj = useSelector(state => state.localObj.localObj)
   const navigate = useNavigate()
 
   const handleFormChange = (e) => {
     setFormBody({...formBody, [e.target.name]: e.target.value })
   }
-  const FormToDatabase = async (formBody) => {
+  const formToDatabase = async (formBody) => {
     if (Object.keys(initialForm).length === 0) {
-      // await Client.post(... , formBody)
+      await Client.post(`/api/localfare` , formBody)
       // Is the create form
     } else {
-      // await Client.put(... , formBody)
+      await Client.put(`/api/localfare/${localFareObj.id}`, formBody)
       // Is the update form
     }
   }
@@ -30,7 +32,7 @@ const LocalFareForm = ({ localFare, locationId }) => {
   }
   return (
     <div>
-      <form onReset={handleReset}>
+      <form onReset={handleReset} osSubmit={handleSubmit}>
         <div className="form-field">
           <label htmlFor="name">Name: </label>
           <input

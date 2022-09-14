@@ -2,9 +2,16 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { blogPostAdded } from "../store/reducers/blogPostsSlice";
+import { useSelector } from "react-redux";
+import Client from "../Services/api";
 
 const BlogPostForm = () => {
+  const initialForm = {}
   const [postValues, setPostValues] = useState({})
+  const [formBody, setFormBody] = useState({})
+  const location = useSelector(state => state.locations.location)
+  const localPostObj = useSelector(state => state.localObj.localObj)
+  
 
   const dispatch = useDispatch()
 
@@ -12,13 +19,21 @@ const BlogPostForm = () => {
     setPostValues({ ...postValues, [e.target.name]: e.target.value })
   }
 
+  const formToDatabase = async (formBody) => {
+    if (Object.keys(initialForm).length === 0) {
+      await Client.post(`/api/locations/posts` , formBody)
+      // Is the create form
+    } else {
+      await Client.put(`/api/locations/posts/${localPostObj.id}`, formBody)
+      // Is the update form
+    }
+  }
+
   const handleSubmitPost = (e) => {
     e.preventDefault()
     console.log("Will post, eventually...")
-    if (Object.keys(postValues).length > 0) {
-      dispatch(blogPostAdded({ postValues }))
-      setPostValues({})
-    }
+    formToDatabase(formBody)
+    // navigate to relevant location
   }
 
   return (
