@@ -26,17 +26,26 @@ const Home = (props) => {
   }
 
   return (
-    <div>
-      <h1>Shop - Travel - Work</h1>
-      {/* <LocationSearch searchKeys={searchKeys} setSearchKeys={setSearchKeys} /> */}
-      <button onClick={handleGetLocations}>Get Locations</button>
-      {locations?.map((location, index) => (
-        <LocationCard
-          key={location.id}
-          location={location}
-          handleLocationSelect={() => handleLocationSelect(location)}
-        />
-      ))}
+    <div id="Home-div">
+      <h1 id="Home-title">S . T . W</h1>
+      <div id="welcome-div">
+        <div id="inner-welcome">
+          <h2>Welcome</h2>
+          <p>This is a collection of our thoughts and tips as we travel the world as digital nomads.</p>
+        </div>
+        {/* <img src="https://static.wixstatic.com/media/d92776_88bde6db809543d5a08df157140d175f~mv2.jpg/v1/fill/w_1878,h_1030,al_c,q_85,enc_auto/d92776_88bde6db809543d5a08df157140d175f~mv2.jpg" alt="pexels-photo-1269805"/> */}
+      </div>
+      <div id="locations-div">
+        {/* <LocationSearch searchKeys={searchKeys} setSearchKeys={setSearchKeys} /> */}
+        <button className="main-btn" onClick={handleGetLocations}>Get Locations</button>
+        {locations?.map((location, index) => (
+          <LocationCard
+            key={location.id}
+            location={location}
+            handleLocationSelect={() => handleLocationSelect(location)}
+          />
+        ))}
+      </div>
     </div>
   )
 }

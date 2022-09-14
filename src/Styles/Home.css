@@ -1,14 +1,56 @@
+#Home-div {
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+
+#welcome-div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  min-height: 400px;
+  background-image: url("https://static.wixstatic.com/media/d92776_88bde6db809543d5a08df157140d175f~mv2.jpg/v1/fill/w_1878,h_1030,al_c,q_85,enc_auto/d92776_88bde6db809543d5a08df157140d175f~mv2.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+#inner-welcome {
+  background: #ECEEE8;
+  padding: 20px;
+  max-width: 400px;
+}
+
+#Home-title {
+  /* height: 25vh; */
+  font-size: calc(72px + (100vw - 320px)/80);
+  
+}
+
+#locations-div {
+  padding: 10px;
+  background-color: #B8D3D1;
+  min-height: 250px;
+}
+
+.location-card {
+  padding: 10px;
+  margin: 10px;
+  border: #ECEEE8 solid 1px;
+}
+
 .fare-card {
   margin: 10px;
-  border: black solid 1px;
+  border: #082321 solid 1px;
 }
 
 .item-card {
   margin: 10px;
-  border: green solid 1px;
+  border: #082321 solid 1px;
 }
 
 .post-card {
   margin: 10px;
-  border: blue solid 1px;
+  border: #082321 solid 1px;
 }

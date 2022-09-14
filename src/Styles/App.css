@@ -9,21 +9,53 @@
   justify-content: center;
   top: 0;
   width: 100%;
-  background-color: #282c34;
+  background-color: #5D737E;
   height: 50px;
   font-size: calc(8px + 2vmin);
-  color: white;
+  color: #082321;
 }
 
 .header-nav {
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
 }
 
 .App-body {
   margin-top: 50px;
+}
+
+button {
+  border: #08201E solid 1px;
+  background-color: #082321;
+  color: #ECEEE8
+}
+button:hover {
+  background-color: #ECEEE8;
+  color: #082321;
+}
+
+p {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.title-name {
+  text-decoration: underline;
+  font-weight: bold;
+}
+
+.card-title {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.toggle-btn {
+  border-radius: 20px;
+  margin: 10px;
 }
 
 @media (prefers-reduced-motion: no-preference) {

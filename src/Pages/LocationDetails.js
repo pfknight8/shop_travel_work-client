@@ -12,13 +12,16 @@ const LocationDetails = () => {
   const [localBlogPosts, setLocalBlogPosts] = useState([])
   const [localFares, setLocalFares] = useState([])
   const [localItems, setLocalItems] = useState([])
+  const [postBtn, togglePostBtn] = useState(false)
+  const [fareBtn, toggleFareBtn] = useState(false)
+  const [itemBtn, toggleItemBtn] = useState(false)
   const navigate = useNavigate()
   const dispatch = useDispatch()
 
   const handleLocalFares = async (location) => {
     setLocalFares([])
     try{
-      let res = await Client.get(`/api/localfare?id=${location.id}`)
+      let res = await Client.get(`/api/localfare/view?id=${location.id}`)
       setLocalFares(res.data)
     } catch (error) {
       throw error
@@ -27,7 +30,7 @@ const LocationDetails = () => {
   const handleLocalItems = async (location) => {
     setLocalItems([])
     try{
-      let res = await Client.get(`/api/localitem?id=${location.id}`)
+      let res = await Client.get(`/api/localitem/view?id=${location.id}`)
       setLocalItems(res.data)
     } catch (error) {
       throw error
@@ -36,7 +39,7 @@ const LocationDetails = () => {
   const handleLocalPosts = async (location) => {
     setLocalBlogPosts([])
     try{
-      let res = await Client.get(`/api/locations/posts?id=${location.id}`)
+      let res = await Client.get(`/api/locations/post/view?id=${location.id}`)
       setLocalBlogPosts(res.data)
     } catch (error) {
       throw error
@@ -56,25 +59,36 @@ const LocationDetails = () => {
 
   return (
     <div>
-      <p>The details page for locations</p>
       <section id="location-detail">
-        <p>Place the main content of a detail here</p>
+        <p className='title-name'>{location.name}</p>
+        <p>Country: {location.country}</p>
+        <p>State/Province: {location.state_province}</p>
+        <p>City: {location.city}</p>
       </section>
       <section id="location-posts">
-        <p>place the localpost cards here</p>
-        {localBlogPosts?.map((blogPost, index) => (
+        <div className='card-title'>
+          <button className="toggle-btn" onClick={() => togglePostBtn(!postBtn)}>{postBtn ? 'v' : '>'}</button>
+          <p className='title-name'>Posts</p>
+        </div>
+        {postBtn && localBlogPosts?.map((blogPost, index) => (
           <BlogPostCard key={blogPost.id} blogPost={blogPost} handleSelection={() => handleSelection('locations/posts', blogPost)} />
         ))}
       </section>
       <section id="location-fare">
-        <p>place the localfare cards here</p>
-        {localFares?.map((fare, index) => (
+        <div className='card-title'>
+          <button className="toggle-btn" onClick={() => toggleFareBtn(!fareBtn)}>{fareBtn ? 'v' : '>'}</button>
+          <p className='title-name'>Local Fares</p>
+        </div>
+        {fareBtn && localFares?.map((fare, index) => (
           <LocalFareCard key={fare.id} localFare={fare} handleSelection={() => handleSelection('localfare', fare)}/>
         ))}
       </section>
       <section id="location-item">
-        <p>Place the local items here</p>
-        {localItems?.map((item, index) => (
+        <div className='card-title'>
+          <button className="toggle-btn" onClick={() => toggleItemBtn(!itemBtn)}>{itemBtn ? 'v' : '>'}</button>
+          <p className='title-name'>Items Procured Locally</p>
+        </div>
+        {itemBtn && localItems?.map((item, index) => (
           <ItemCard key={item.id} localItem={item} handleSelection={() => handleSelection('localitem', item)}/>
         ))}
       </section>

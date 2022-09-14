@@ -1,5 +1,5 @@
 import { NavLink } from "react-router-dom"
-import { useSelector } from "react-redux"
+// import { useSelector } from "react-redux"
 import { LogOut } from "../Services/auth"
 
 const HeaderNav = ({user}) => {
@@ -19,10 +19,10 @@ const HeaderNav = ({user}) => {
 
   return (
     <div className="header-nav">
-      <NavLink to="/">Shop-Travel-Work</NavLink>
-      <NavLink to="/profile">Profile</NavLink>
-      <NavLink to="/signup">Sign Up</NavLink>
-      {userBtnOpt}
+      <NavLink to="/">SHOP . TRAVEL . WORK</NavLink>
+      {/* <NavLink to="/profile">Profile</NavLink> */}
+      {/* <NavLink to="/signup">Sign Up</NavLink> */}
+      {/* {userBtnOpt} */}
     </div>
   )
 }

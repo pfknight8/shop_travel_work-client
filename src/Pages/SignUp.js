@@ -91,10 +91,11 @@ const SignUp = () => {
         </div>
         <div className="btn-holder">
           <button
+            className="form-btn"
             type="submit"
             disabled={!formValues.password || (formValues.password !== formValues.password_conf)}
           >Submit</button>
-          <button type="reset">Reset</button>
+          <button className="form-btn" type="reset">Reset</button>
         </div>
         <p className="signup-login-text">Already have an account? Log in{' '}<a className="here" href="/login">here</a></p>
       </form>

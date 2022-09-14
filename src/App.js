@@ -54,6 +54,10 @@ function App() {
           <Route path="/testpath" element={ <BlogPostForm /> } />
         </Routes>
       </main>
+      <footer>
+        <p>Get in Touch: contact us at info@shoptravelwork.com</p>
+        <p>2022</p>
+      </footer>
     </div>
   );
 }
