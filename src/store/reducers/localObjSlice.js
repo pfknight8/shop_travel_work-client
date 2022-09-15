@@ -1,5 +1,4 @@
 import { createSlice } from "@reduxjs/toolkit";
-// import Client, { BASE_URL } from '../../Services/api'
 
 const initialState = {
   localObj: []

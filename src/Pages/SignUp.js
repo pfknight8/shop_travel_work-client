@@ -20,14 +20,12 @@ const SignUp = () => {
     } catch (error) {
       throw error
     }
-    // Need to write navigate logic; only if succeeded to create a new user.
   }
   const handleReset = () => {
     setFormValues(initalFormState)
   }
   return (
     <div>
-      <p>The signup page</p>
       <form id="signup-form" onSubmit={handleSubmit} onReset={handleReset}>
         <div className="form-field">
           <label htmlFor="username">Username: </label>
@@ -99,6 +97,7 @@ const SignUp = () => {
         </div>
         <p className="signup-login-text">Already have an account? Log in{' '}<a className="here" href="/login">here</a></p>
       </form>
+      <p>Already have an account? <a href="/login">Log In.</a></p>
     </div>
   )
 }
