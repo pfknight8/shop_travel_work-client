@@ -34,7 +34,12 @@ const BlogPostForm = ({ blogPost }) => {
       }
       // Is the create form
     } else {
-      await Client.put(`/api/locations/posts/${localPostObj.id}`, formBody)
+      try {
+        await Client.put(`/api/locations/posts/${localPostObj.id}`, formBody)
+      } catch (error) {
+        alert('You must be the content owner to do that!')
+        throw error
+      }
       // Is the update form
     }
   }

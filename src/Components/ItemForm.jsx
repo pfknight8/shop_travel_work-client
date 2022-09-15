@@ -21,15 +21,25 @@ const ItemForm = ({ localItem }) => {
   const handleFormChange = (e) => {
     setFormBody({...formBody, [e.target.name]: e.target.value })
   }
-  
+
   const formToDatabase = async (formBody) => {
     if (Object.keys(initialForm).length === 0) {
-      let res = await Client.post(`/api/localitems` , formBody)
-      console.log(res.data)
+      try {
+        let res = await Client.post(`/api/localitems` , formBody)
+        alert(res.statusText)
+      } catch (error) {
+        alert('You must be signed in to do that!')
+        throw error
+      }
       // Is the create form
     } else {
-      let res = await Client.put(`/api/localitems/${localItem.id}`, formBody)
-      console.log(res.data)
+      try {
+        let res = await Client.put(`/api/localitems/${localItem.id}`, formBody)
+        alert(res.statusText)
+      } catch (error) {
+        alert('You must be the content owner to do that!')
+        throw error
+      }
       // Is the update form
     }
   }
