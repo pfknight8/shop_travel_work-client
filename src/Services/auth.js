@@ -2,6 +2,7 @@ import Client from "./api";
 
 export const LoginUser = async (data) => {
   try {
+    localStorage.clear()
     let res = await Client.post('/api/token', data)
     localStorage.setItem('token', res.data.access)
     localStorage.setItem('refresh', res.data.refresh)

@@ -20,7 +20,6 @@ const LocalFareDetails = () => {
     }
   }
 
-
   const handleDelete = (e) => {
     e.preventDefault()
     deleteObj()

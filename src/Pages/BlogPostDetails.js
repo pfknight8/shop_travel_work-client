@@ -1,15 +1,40 @@
 import { useState } from "react"
 import { useSelector } from "react-redux"
+import { useNavigate } from "react-router-dom"
+import BlogPostForm from "../Components/BlogPostForm"
+import Client from "../Services/api"
 
 const BlogPostDetails = () => {
   const blogPost = useSelector(state => state.localObj.localObj)
   const [postEditBtn, togglePostEditBtn] = useState(false)
+  const navigate = useNavigate()
+
+  const deleteObj = async () => {
+    try {
+      let res = await Client.delete(`/api/locations/posts/${blogPost.id}`)
+      console.log(res.statusText)
+      navigate(`/`)
+    } catch (error) {
+      alert("Unable to delete! Only content owners are able to delete.")
+      throw error
+    }
+  }
+
+  const handleDelete = (e) => {
+    e.preventDefault()
+    deleteObj()
+  }
 
   return (
     <div>
       <h2>{blogPost.title}</h2>
       <p>{blogPost.body}</p>
       <p>View the contents of a post here</p>
+      <div className="btn-holder">
+        <button className="edit-btn" onClick={() => togglePostEditBtn(!postEditBtn)}>{postEditBtn ? 'Cancel' : 'Edit'}</button>
+        <button className="delete-btn" onClick={handleDelete}>Delete</button>
+      </div>
+      {postEditBtn && <BlogPostForm blogPost={blogPost} />}
     </div>
   )
 }
