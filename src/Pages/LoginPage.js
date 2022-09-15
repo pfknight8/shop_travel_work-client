@@ -25,7 +25,6 @@ const LoginPage = () => {
 
   return (
     <div>
-      <p>The page for logging in</p>
       <form onSubmit={handleSubmit}>
         <div className="login-field">
           <label htmlFor="username">Username: </label>

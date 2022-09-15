@@ -37,7 +37,7 @@ function App() {
   }
   
   return (
-    <div className="App">
+    <div id="App">
       <header className="App-header">
         <HeaderNav />
       </header>

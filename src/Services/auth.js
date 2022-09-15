@@ -1,4 +1,6 @@
 import Client from "./api";
+import { useDispatch } from "react-redux";
+import { getUser } from "../store/reducers/userSlice";
 
 export const LoginUser = async (data) => {
   try {
@@ -33,5 +35,7 @@ export const CheckLogin = async () => {
 
 export const LogOut = () => {
   // write functions to reset the appropraite state values
+  const dispatch = useDispatch()
+  dispatch(getUser([]))
   localStorage.clear()
 }

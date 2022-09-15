@@ -1,8 +1,10 @@
 import { NavLink } from "react-router-dom"
 import { LogOut } from "../Services/auth"
+import { useSelector } from "react-redux"
 
-const HeaderNav = ({user}) => {
+const HeaderNav = () => {
   // temporary**
+  let user = useSelector(state => state.user.user)
   let userin=localStorage.getItem('token')
   // temporary**
   let userBtnOpt
@@ -21,10 +23,17 @@ const HeaderNav = ({user}) => {
   }
 
   return (
-    <div className="header-nav">
+    <div id="navHeader">
       <NavLink to="/">SHOP . TRAVEL . WORK</NavLink>
-      {/* <NavLink to="/profile">Profile</NavLink> */}
-      {userBtnOpt}
+      <div className="header-nav">
+        <div className="left-header">
+          {/* <NavLink to="/profile">Profile</NavLink> */}
+          {userBtnOpt}
+        </div>
+        <div className="right-header">
+          {user?.username}
+        </div>
+      </div>
     </div>
   )
 }
