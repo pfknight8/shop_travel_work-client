@@ -12,10 +12,15 @@ const LocalFareForm = ({ localFare }) => {
   const localFareObj = useSelector(state => state.localObj.localObj)
   const navigate = useNavigate()
 
-  useEffect(() => {
+  
+  const checkFormInfo = () => {    
     if (Object.keys(initialForm).length === 0) {
       setFormBody({...formBody, "user_id": user.id, "location_id": location.id})
     }
+  }
+  
+  useEffect(() => {
+    checkFormInfo()
   }, [])
 
   const handleFormChange = (e) => {
@@ -41,10 +46,12 @@ const LocalFareForm = ({ localFare }) => {
   const handleSubmit = (e) => {
     e.preventDefault()
     formToDatabase(formBody)
-    navigate(`/locations/${location.id}`) //Should only be comming from a location page
+    setFormBody(initialForm)
+    navigate(`/locations/${location.id}`)
   }
   const handleReset = () => {
     setFormBody(initialForm)
+    checkFormInfo()
   }
   return (
     <div>
@@ -114,7 +121,7 @@ const LocalFareForm = ({ localFare }) => {
           </select>
         </div>
         <div className="btn-holder">
-          <button type="submit">Submit</button>
+          <button type="submit" disabled={!formBody.name}>Submit</button>
           <button type="reset">Reset</button>
         </div>
       </form>

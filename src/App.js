@@ -51,7 +51,6 @@ function App() {
           <Route path="/locations/posts/:post_id" element={ <BlogPostDetails /> } />
           <Route path="/localfare/:fare_id" element={ <LocalFareDetails /> } />
           <Route path="/localitem/:item_id" element={ <ItemDetails /> } />
-          <Route path="/testpath" element={ <BlogPostForm /> } />
         </Routes>
       </main>
       <footer>

@@ -10,13 +10,16 @@ const BlogPostForm = ({ blogPost }) => {
   const location = useSelector(state => state.locations.location)
   const user = useSelector(state => state.user.user)
   const localPostObj = useSelector(state => state.localObj.localObj)
-  
   const navigate = useNavigate()
   
-  useEffect(() => {
+  const checkFormInfo = () => {
     if (Object.keys(initialForm).length === 0) {
       setFormBody({...formBody, "user_id": user.id, "location_id": location.id}) //"user": user.username, "location": location.name
     }
+  }
+
+  useEffect(() => {
+    checkFormInfo()
   }, [])
 
   const handlePostChange = (e) => {
@@ -27,7 +30,6 @@ const BlogPostForm = ({ blogPost }) => {
     if (Object.keys(initialForm).length === 0) {
       try {
         let res = await Client.post(`/api/locations/posts` , formBody)
-        console.log(res.data)
       } catch (error) {
         alert('You must be signed in to do that!')
         throw error
@@ -46,14 +48,19 @@ const BlogPostForm = ({ blogPost }) => {
 
   const handleSubmitPost = (e) => {
     e.preventDefault()
-    console.log(formBody)
     formToDatabase(formBody)
-    // navigate to relevant location
+    setFormBody(initialForm)
+    navigate(`/locations/${location.id}`)
+  }
+
+  const handleReset = () => {
+    setFormBody(initialForm)
+    checkFormInfo()
   }
 
   return (
     <div className="post-form">
-      <form onSubmit={handleSubmitPost}>
+      <form onSubmit={handleSubmitPost} onReset={handleReset}>
         <div className="form-field">
           <label htmlFor="title">Title: </label>
           <input
@@ -62,7 +69,7 @@ const BlogPostForm = ({ blogPost }) => {
             name="title"
             required
             onChange={handlePostChange}
-            defaultValue={formBody?.title}
+            defaultValue={initialForm?.title}
           />
         </div>
         <div className="form-field">
@@ -73,10 +80,12 @@ const BlogPostForm = ({ blogPost }) => {
             name="body"
             required
             onChange={handlePostChange}
+            defaultValue={initialForm?.body}
           />
         </div>
         <div className="btn-holder">
           <button className="post-btn" disabled={!formBody.title} type="submit">Submit</button>
+          <button className="post-btn" type="submit">Reset</button>
         </div>
       </form>
     </div>
