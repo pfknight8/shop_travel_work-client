@@ -16,7 +16,6 @@ const SignUp = () => {
     delete formClone.password_conf
     try{
       let res = await SignUpUser(formClone)
-      console.log(res)
     } catch (error) {
       throw error
     }

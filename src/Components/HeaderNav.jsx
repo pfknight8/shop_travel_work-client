@@ -1,5 +1,4 @@
 import { NavLink } from "react-router-dom"
-// import { useSelector } from "react-redux"
 import { LogOut } from "../Services/auth"
 
 const HeaderNav = ({user}) => {
@@ -13,7 +12,11 @@ const HeaderNav = ({user}) => {
     )
   } else {
     userBtnOpt = (
-      <NavLink to="/login">Log In</NavLink>
+      <span>
+        <NavLink to="/signup">Sign Up</NavLink>
+        <NavLink to="/login">Log In</NavLink>
+      </span>
+      // signup included here temporarily, until appropriate to include the profile page.
     )
   }
 
@@ -21,7 +24,6 @@ const HeaderNav = ({user}) => {
     <div className="header-nav">
       <NavLink to="/">SHOP . TRAVEL . WORK</NavLink>
       {/* <NavLink to="/profile">Profile</NavLink> */}
-      {/* <NavLink to="/signup">Sign Up</NavLink> */}
       {userBtnOpt}
     </div>
   )

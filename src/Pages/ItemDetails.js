@@ -12,7 +12,6 @@ const ItemDetails = () => {
   const deleteObj = async () => {
     try {
       let res = await Client.delete(`/api/localitems/${localItem.id}`)
-      console.log(res.statusText)
       navigate(`/`)
     } catch (error) {
       alert("Unable to delete! Only content owners are able to delete.")

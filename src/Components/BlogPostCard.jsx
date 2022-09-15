@@ -1,5 +1,3 @@
-// Used to display posts
-
 const BlogPostCard = ({blogPost, handleSelection}) => {
   return (
     <div className="post-card">

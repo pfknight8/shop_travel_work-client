@@ -8,7 +8,6 @@
 import { configureStore } from '@reduxjs/toolkit'
 import locationReducer from './reducers/locationSlice'
 import userReducer from './reducers/userSlice'
-import blogPostsReducer from './reducers/blogPostsSlice'
 import authReducer from './reducers/authSlice'
 import localObjReducer from './reducers/localObjSlice'
 
@@ -18,7 +17,6 @@ const store = configureStore({
     user: userReducer,
     auth: authReducer,
     localObj: localObjReducer,
-    blogPosts: blogPostsReducer
   }
 })
 

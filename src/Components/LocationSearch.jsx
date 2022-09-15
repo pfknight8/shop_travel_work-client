@@ -1,4 +1,9 @@
-// Will be the search bar or form used to search locations.
+// Will be the search bar or form used to search locations. Will replace the current 'Get Locations' button.
+
+////////////////////////////////////////////////////////////////////////////
+// Not implemented yet, but included as a work in progress. Stretch Goal. //
+////////////////////////////////////////////////////////////////////////////
+
 const LocationSearch = ({ searchKeys, setSearchKeys }) => {
   //
   let countryList = [{id: 196, name: 'United States of America', shortname: 'USA'}, {id: 197, name: 'Canada', shortname: 'Canada'}]

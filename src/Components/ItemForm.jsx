@@ -26,7 +26,6 @@ const ItemForm = ({ localItem }) => {
     if (Object.keys(initialForm).length === 0) {
       try {
         let res = await Client.post(`/api/localitems` , formBody)
-        alert(res.statusText)
       } catch (error) {
         alert('You must be signed in to do that!')
         throw error
@@ -35,7 +34,6 @@ const ItemForm = ({ localItem }) => {
     } else {
       try {
         let res = await Client.put(`/api/localitems/${localItem.id}`, formBody)
-        alert(res.statusText)
       } catch (error) {
         alert('You must be the content owner to do that!')
         throw error
