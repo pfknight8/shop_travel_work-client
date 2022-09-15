@@ -1,35 +1,44 @@
 //These forms will be used to enter new entries, or update existing ones.
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { useNavigate } from "react-router-dom"
 import { useSelector } from "react-redux"
 import Client from "../Services/api"
 
-const ItemForm = ({ localItem}) => {
+const ItemForm = ({ localItem }) => {
   const initialForm = localItem
   const [formBody, setFormBody] = useState(initialForm)
+  const location = useSelector(state => state.locations.location)
+  const user = useSelector(state => state.user.user)
   const localItemObj = useSelector(state => state.localObj.localObj)
-  let locationId = localItemObj?.location_id
   const navigate = useNavigate()
+
+  useEffect(() => {
+    if (Object.keys(initialForm).length === 0) {
+      setFormBody({...formBody, "user_id": user.id, "location_id": location.id})
+    }
+  }, [])
 
   const handleFormChange = (e) => {
     setFormBody({...formBody, [e.target.name]: e.target.value })
   }
+  
   const formToDatabase = async (formBody) => {
     if (Object.keys(initialForm).length === 0) {
-      await Client.post(`/api/localitems` , formBody)
+      let res = await Client.post(`/api/localitems` , formBody)
+      console.log(res.data)
       // Is the create form
     } else {
-      await Client.put(`/api/localitem/${localItemObj.id}`, formBody)
+      let res = await Client.put(`/api/localitems/${localItem.id}`, formBody)
+      console.log(res.data)
       // Is the update form
     }
   }
   const handleSubmit = (e) => {
     e.preventDefault()
     formToDatabase(formBody)
-    navigate(`/locations/${locationId}`) //Should only be comming from a location page
+    navigate(`/locations/${location.id}`) //Should only be comming from a location page
   }
-  const handleReset = (e) => {
-    e.preventDefault()
+  const handleReset = () => {
     setFormBody(initialForm)
   }
 
@@ -43,7 +52,7 @@ const ItemForm = ({ localItem}) => {
           type="text"
           required
           onChange={handleFormChange}
-          defaultValue={formBody.name}
+          defaultValue={initialForm?.name}
         />
       </div>
       <div className="form-field">
@@ -54,7 +63,7 @@ const ItemForm = ({ localItem}) => {
           type="text"
           required
           onChange={handleFormChange}
-          defaultValue={formBody.store}
+          defaultValue={initialForm?.store}
         />
       </div>
       <div className="form-field">
@@ -64,7 +73,7 @@ const ItemForm = ({ localItem}) => {
           name="store-url"
           type="text"
           onChange={handleFormChange}
-          defaultValue={formBody.store_url}
+          defaultValue={initialForm?.store_url}
         />
       </div>
       <div className="form-field">
@@ -74,7 +83,7 @@ const ItemForm = ({ localItem}) => {
           name="image"
           type="text"
           onChange={handleFormChange}
-          defaultValue={formBody.image}
+          defaultValue={initialForm?.image}
         />
       </div>
       <div className="form-field">
@@ -85,7 +94,7 @@ const ItemForm = ({ localItem}) => {
           type="text"
           required
           onChange={handleFormChange}
-          defaultValue={formBody.description}
+          defaultValue={initialForm?.description}
         />
       </div>
       <div className="btn-holder">

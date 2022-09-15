@@ -73,7 +73,7 @@ const LocationDetails = () => {
       </section>
       <section id="location-posts">
         <div className='card-title'>
-          <button className="toggle-btn" onClick={() => togglePostBtn(!postBtn)}>{postBtn ? 'v' : '>'}</button>
+          <button className="toggle-btn" onClick={() => {togglePostBtn(!postBtn); togglePostFormBtn(false)}}>{postBtn ? 'v' : '>'}</button>
           <p className='title-name'>Posts</p>
           {postBtn && (<button className='add-something' onClick={() => togglePostFormBtn(!postFormBtn)}>{postFormBtn ? 'Cancel' : 'Add Post'}</button>)}
         </div>
@@ -86,7 +86,7 @@ const LocationDetails = () => {
       </section>
       <section id="location-fare">
         <div className='card-title'>
-          <button className="toggle-btn" onClick={() => toggleFareBtn(!fareBtn)}>{fareBtn ? 'v' : '>'}</button>
+          <button className="toggle-btn" onClick={() => {toggleFareBtn(!fareBtn); toggleFareFormBtn(false)}}>{fareBtn ? 'v' : '>'}</button>
           <p className='title-name'>Local Fares</p>
           {fareBtn && (<button className='add-something' onClick={() => toggleFareFormBtn(!fareFormBtn)}>{fareFormBtn ? 'Cancel' : 'Add Local Fare'}</button>)}
         </div>
@@ -99,7 +99,7 @@ const LocationDetails = () => {
       </section>
       <section id="location-item">
         <div className='card-title'>
-          <button className="toggle-btn" onClick={() => toggleItemBtn(!itemBtn)}>{itemBtn ? 'v' : '>'}</button>
+          <button className="toggle-btn" onClick={() => {toggleItemBtn(!itemBtn); toggleItemFormBtn(false);}}>{itemBtn ? 'v' : '>'}</button>
           <p className='title-name'>Items Procured Locally</p>
           {itemBtn && (<button className='add-something' onClick={() => toggleItemFormBtn(!itemFormBtn)}>{itemFormBtn ? 'Cancel' : 'Add Local Item'}</button>)}
         </div>
