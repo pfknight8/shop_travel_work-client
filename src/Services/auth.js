@@ -35,7 +35,7 @@ export const CheckLogin = async () => {
 
 export const LogOut = () => {
   // write functions to reset the appropraite state values
-  const dispatch = useDispatch()
-  dispatch(getUser([]))
   localStorage.clear()
+  const dispatch = useDispatch()
+  dispatch(getUser(""))
 }

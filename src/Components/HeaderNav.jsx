@@ -10,7 +10,10 @@ const HeaderNav = () => {
   let userBtnOpt
   if (userin) {
     userBtnOpt = (
-      <NavLink to="/" onClick={LogOut}>Log Out</NavLink>
+      <span>
+        <NavLink to={`/profile/${user.id}`}>Profile</NavLink>
+        <NavLink to="/" onClick={LogOut}>Log Out</NavLink>
+      </span>
     )
   } else {
     userBtnOpt = (

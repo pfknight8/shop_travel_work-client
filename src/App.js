@@ -30,11 +30,11 @@ function App() {
   //   }
   // }, [])
 
-  const LogOut = () => {
-    localStorage.clear()
-    dispatch(getUser(""))
-    navigate('/')
-  }
+  // const LogOut = () => {
+  //   localStorage.clear()
+  //   dispatch(getUser(""))
+  //   navigate('/')
+  // }
   
   return (
     <div id="App">
