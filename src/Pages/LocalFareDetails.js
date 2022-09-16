@@ -25,7 +25,7 @@ const LocalFareDetails = () => {
   }
 
   return (
-    <div>
+    <div className="details-div">
       <h2>{localFare.name}</h2>
       <h4>{localFare.category}</h4>
       <p>{localFare.description}</p>
@@ -34,7 +34,9 @@ const LocalFareDetails = () => {
         <button className="edit-btn" onClick={() => toggleFareEditBtn(!fareEditBtn)}>{fareEditBtn ? 'Cancel' : 'Edit'}</button>
         <button className="delete-btn" onClick={handleDelete}>Delete</button>
       </div>
-      {fareEditBtn && <LocalFareForm localFare={localFare} />}
+      <div className="edit-form-holder">
+        {fareEditBtn && <LocalFareForm localFare={localFare} />}
+      </div>
     </div>
   )
 }

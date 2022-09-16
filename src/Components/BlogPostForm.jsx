@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom"
 import { useSelector } from "react-redux";
 import Client from "../Services/api";
+import '../Styles/Form.css'
 
 const BlogPostForm = ({ blogPost }) => {
   const initialForm = blogPost
@@ -59,12 +60,12 @@ const BlogPostForm = ({ blogPost }) => {
   }
 
   return (
-    <div className="post-form">
-      <form onSubmit={handleSubmitPost} onReset={handleReset}>
+    <div id="post-div">
+      <form id="post-form" onSubmit={handleSubmitPost} onReset={handleReset}>
         <div className="form-field">
           <label htmlFor="title">Title: </label>
           <input
-            className="post-input"
+            className="form-input"
             type="text"
             name="title"
             required
@@ -75,7 +76,7 @@ const BlogPostForm = ({ blogPost }) => {
         <div className="form-field">
           <label htmlFor="body">Post Body: </label>
           <textarea
-            className="post-input"
+            className="form-input"
             type="text"
             name="body"
             required

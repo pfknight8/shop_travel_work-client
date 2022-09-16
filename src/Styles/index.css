@@ -22,13 +22,15 @@ a {
 }
 
 a:link, a:visited {
-  color: #ECEEE8;
   text-decoration: underline;
   font-weight: bold;
 }
 a:hover {
-  color: #ECEEE8;
   text-decoration: none;
+}
+
+.nav-link {
+  color: #ECEEE8
 }
 
 code {

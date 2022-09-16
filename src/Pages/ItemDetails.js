@@ -25,7 +25,7 @@ const ItemDetails = () => {
   }
 
   return localItem && (
-    <div>
+    <div className="details-div">
       <h2>{localItem.name}</h2>
       <p>{localItem.description}</p>
       <h3>{localItem.store}</h3>

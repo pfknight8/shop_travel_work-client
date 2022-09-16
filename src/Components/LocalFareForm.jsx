@@ -3,6 +3,7 @@ import { useState, useEffect } from "react"
 import { useNavigate } from "react-router-dom"
 import { useSelector } from "react-redux"
 import Client from "../Services/api"
+import '../Styles/Form.css'
 
 const LocalFareForm = ({ localFare }) => {
   const initialForm = localFare
@@ -76,6 +77,7 @@ const LocalFareForm = ({ localFare }) => {
             onChange={handleFormChange}
             defaultValue={initialForm?.category}
           >
+            <option hidden>Select</option>
             <option value="Beverage" aria-label="Beverage">Beverage</option>
             <option value="Breakfast" aria-label="Breakfast">Breakfast</option>
             <option value="Lunch" aria-label="Lunch">Lunch</option>
@@ -109,12 +111,13 @@ const LocalFareForm = ({ localFare }) => {
         <div className="form-field">
           <label htmlFor="establishment">Recommend: </label>
           <select
-            className="form-input"
+            className="form-select"
             name="recommend"
             required
             onChange={handleFormChange}
             defaultValue={initialForm?.recommend}
           >
+            <option hidden>Select</option>
             <option value={-1} aria-label="avoid">Avoid</option>
             <option value={0} aria-label="neutral">Hit or Miss</option>
             <option value={1} aria-label="recommend">Recommended</option>

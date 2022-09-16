@@ -11,15 +11,15 @@ const HeaderNav = () => {
   if (userin) {
     userBtnOpt = (
       <span>
-        <NavLink to={`/profile/${user.id}`}>Profile</NavLink>
-        <NavLink to="/" onClick={LogOut}>Log Out</NavLink>
+        <NavLink className="nav-link" to={`/profile/${user.id}`}>Profile</NavLink>
+        <NavLink className="nav-link" to="/" onClick={LogOut}>Log Out</NavLink>
       </span>
     )
   } else {
     userBtnOpt = (
       <span>
-        <NavLink to="/signup">Sign Up</NavLink>
-        <NavLink to="/login">Log In</NavLink>
+        <NavLink className="nav-link" to="/signup">Sign Up</NavLink>
+        <NavLink className="nav-link" to="/login">Log In</NavLink>
       </span>
       // signup included here temporarily, until appropriate to include the profile page.
     )
@@ -27,10 +27,10 @@ const HeaderNav = () => {
 
   return (
     <div id="navHeader">
-      <NavLink to="/">SHOP . TRAVEL . WORK</NavLink>
+      <NavLink className="nav-link" to="/">SHOP . TRAVEL . WORK</NavLink>
       <div className="header-nav">
         <div className="left-header">
-          {/* <NavLink to="/profile">Profile</NavLink> */}
+          {/* <NavLink className="nav-link" to="/profile">Profile</NavLink> */}
           {userBtnOpt}
         </div>
         <div className="right-header">

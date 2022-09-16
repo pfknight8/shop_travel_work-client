@@ -15,7 +15,12 @@
   background-color: #5D737E;
   height: 50px;
   font-size: calc(8px + 2vmin);
-  color: #082321;
+  color: #ECEEE8;
+}
+
+#navHeader {
+  font-size: calc(10px + 1vh);
+  color: #ECEEE8;
 }
 
 .header-nav {
@@ -33,6 +38,10 @@
 
 .App-body {
   margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 button {
@@ -94,6 +103,34 @@ p {
   border: #082321 solid 1px;
   width: 50vw;
   min-width: 225px;
+}
+
+#login-page {
+  margin-top: 80px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#signup-page {
+  margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.details-div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.edit-form-holder {
+  width: 90vw;
+  max-width: 500px;
 }
 
 @media (prefers-reduced-motion: no-preference) {

@@ -25,7 +25,7 @@ const BlogPostDetails = () => {
   }
 
   return (
-    <div>
+    <div className="details-div">
       <h2>{blogPost.title}</h2>
       <p>{blogPost.body}</p>
       <p>View the contents of a post here</p>

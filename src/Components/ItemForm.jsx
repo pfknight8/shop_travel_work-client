@@ -3,6 +3,7 @@ import { useState, useEffect } from "react"
 import { useNavigate } from "react-router-dom"
 import { useSelector } from "react-redux"
 import Client from "../Services/api"
+import '../Styles/Form.css'
 
 const ItemForm = ({ localItem }) => {
   const initialForm = localItem

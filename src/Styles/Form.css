@@ -1,0 +1,19 @@
+#signup-form, #login-form {
+  width: 90vw;
+  max-width: 500px;
+}
+
+.form-field {
+  padding: 8px;
+  display: flex;
+  justify-content: space-between;
+  text-align: left;
+}
+
+.form-select {
+  width: 50%
+}
+
+.signup-input, .login-input, .form-input {
+  width: 60%;
+}

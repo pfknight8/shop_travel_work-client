@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from "react-redux"
 import { getUser } from "../store/reducers/userSlice"
 import { LoginUser } from "../Services/auth"
 import Client from "../Services/api"
+import '../Styles/Form.css'
 
 const LoginPage = () => {
   let initialFormState = {}
@@ -24,9 +25,9 @@ const LoginPage = () => {
   }
 
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
-        <div className="login-field">
+    <div id="login-page">
+      <form id="login-form" onSubmit={handleSubmit}>
+        <div className="form-field">
           <label htmlFor="username">Username: </label>
           <input
             className="login-input"
@@ -36,7 +37,7 @@ const LoginPage = () => {
             onChange={handleChange}
           />
         </div>
-        <div className="login-field">
+        <div className="form-field">
           <label htmlFor="password">Password: </label>
           <input
             className="login-input"
@@ -49,7 +50,7 @@ const LoginPage = () => {
         <div className="btn-holder">
           <button className="user-btn" disabled={!formValues.username} type="submit">Submit</button>
         </div>
-        <p className="signup-login-text">Already have an account? Sign Up{' '}<a className="here" href="/signup">here</a></p>
+        <p className="signup-login-text">Already have an account? <a className="here" href="/signup">Sign Up</a></p>
       </form>
     </div>
   )

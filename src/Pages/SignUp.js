@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom"
 import { useState } from "react"
 import { SignUpUser } from "../Services/auth"
+import '../Styles/Form.css'
 
 const SignUp = () => {
   const initalFormState = {}
@@ -25,12 +26,12 @@ const SignUp = () => {
     setFormValues(initalFormState)
   }
   return (
-    <div>
+    <div id="signup-page">
       <form id="signup-form" onSubmit={handleSubmit} onReset={handleReset}>
         <div className="form-field">
           <label htmlFor="username">Username: </label>
           <input
-            className="signup-field"
+            className="signup-input"
             name="username"
             type="text"
             onChange={handleChange}
@@ -40,7 +41,7 @@ const SignUp = () => {
         <div className="form-field">
           <label htmlFor="email">Email: </label>
           <input
-            className="signup-field"
+            className="signup-input"
             name="email"
             type="email"
             onChange={handleChange}
@@ -50,7 +51,7 @@ const SignUp = () => {
         <div className="form-field">
           <label htmlFor="first_name">First Name: </label>
           <input
-            className="signup-field"
+            className="signup-input"
             name="first_name"
             type="text"
             onChange={handleChange}
@@ -60,7 +61,7 @@ const SignUp = () => {
         <div className="form-field">
           <label htmlFor="last_name">Last Name: </label>
           <input
-            className="signup-field"
+            className="signup-input"
             name="last_name"
             type="text"
             onChange={handleChange}
@@ -70,7 +71,7 @@ const SignUp = () => {
         <div className="form-field">
           <label htmlFor="password">Password: </label>
           <input
-            className="signup-field"
+            className="signup-input"
             name="password"
             type="password"
             onChange={handleChange}
@@ -80,7 +81,7 @@ const SignUp = () => {
         <div className="form-field">
           <label htmlFor="password_conf">Confirm Password: </label>
           <input
-            className="signup-field"
+            className="signup-input"
             name="password_conf"
             type="password"
             onChange={handleChange}
@@ -95,9 +96,8 @@ const SignUp = () => {
           >Submit</button>
           <button className="form-btn" type="reset">Reset</button>
         </div>
-        <p className="signup-login-text">Already have an account? Log in{' '}<a className="here" href="/login">here</a></p>
+        <p className="signup-login-text">Already have an account? <a className="here" href="/login">Log In</a></p>
       </form>
-      <p>Already have an account? <a href="/login">Log In.</a></p>
     </div>
   )
 }
