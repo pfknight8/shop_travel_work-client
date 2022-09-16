@@ -27,10 +27,17 @@ const LocalFareForm = ({ localFare }) => {
   const handleFormChange = (e) => {
     setFormBody({...formBody, [e.target.name]: e.target.value })
   }
+  const handleFormInts = (e) => {
+    setFormBody({...formBody, [e.target.name]: parseInt(e.target.value)})
+  }
+
   const formToDatabase = async (formBody) => {
     if (Object.keys(initialForm).length === 0) {
+      console.log(formBody)
       try {
         await Client.post(`/api/localfare` , formBody)
+        alert("submitted!")
+        navigate(`/`)
       } catch (error) {
         alert('You must be signed in to do that!')
         throw error
@@ -38,6 +45,7 @@ const LocalFareForm = ({ localFare }) => {
     } else {
       try {
         await Client.put(`/api/localfare/${localFare.id}`, formBody)
+        navigate(`/locations/${location.id}`)
       } catch (error) {
         alert('You must be the content owner to do that!')
         throw error
@@ -48,7 +56,6 @@ const LocalFareForm = ({ localFare }) => {
     e.preventDefault()
     formToDatabase(formBody)
     setFormBody(initialForm)
-    navigate(`/locations/${location.id}`)
   }
   const handleReset = () => {
     setFormBody(initialForm)
@@ -114,7 +121,7 @@ const LocalFareForm = ({ localFare }) => {
             className="form-select"
             name="recommend"
             required
-            onChange={handleFormChange}
+            onChange={handleFormInts}
             defaultValue={initialForm?.recommend}
           >
             <option hidden>Select</option>

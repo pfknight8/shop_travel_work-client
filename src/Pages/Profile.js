@@ -36,10 +36,11 @@ const Profile = () => {
       <p>Last name: {user?.last_name}</p>
       <div className="btn-holder">
         {/* <button id='delete-user' onClick={handleDelete}>Delete User</button> */}
-        <p>This page will display user created content, and user control buttons eventually</p>
       </div>
     </div>
   )
 }
 
 export default Profile
+
+// This page will display user created content, and user control buttons eventually

@@ -26,7 +26,8 @@ const ItemForm = ({ localItem }) => {
   const formToDatabase = async (formBody) => {
     if (Object.keys(initialForm).length === 0) {
       try {
-        let res = await Client.post(`/api/localitems` , formBody)
+        await Client.post(`/api/localitems` , formBody)
+        navigate(`/`)
       } catch (error) {
         alert('You must be signed in to do that!')
         throw error
@@ -34,7 +35,8 @@ const ItemForm = ({ localItem }) => {
       // Is the create form
     } else {
       try {
-        let res = await Client.put(`/api/localitems/${localItem.id}`, formBody)
+        await Client.put(`/api/localitems/${localItem.id}`, formBody)
+        navigate(`/locations/${location.id}`)
       } catch (error) {
         alert('You must be the content owner to do that!')
         throw error
@@ -45,7 +47,6 @@ const ItemForm = ({ localItem }) => {
   const handleSubmit = (e) => {
     e.preventDefault()
     formToDatabase(formBody)
-    navigate(`/locations/${location.id}`) //Should only be comming from a location page
   }
   const handleReset = () => {
     setFormBody(initialForm)

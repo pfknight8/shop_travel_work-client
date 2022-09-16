@@ -30,7 +30,8 @@ const BlogPostForm = ({ blogPost }) => {
   const formToDatabase = async (formBody) => {
     if (Object.keys(initialForm).length === 0) {
       try {
-        let res = await Client.post(`/api/locations/posts` , formBody)
+        await Client.post(`/api/locations/posts` , formBody)
+        navigate(`/`)
       } catch (error) {
         alert('You must be signed in to do that!')
         throw error
@@ -39,6 +40,7 @@ const BlogPostForm = ({ blogPost }) => {
     } else {
       try {
         await Client.put(`/api/locations/posts/${localPostObj.id}`, formBody)
+        navigate(`/locations/${location.id}`)
       } catch (error) {
         alert('You must be the content owner to do that!')
         throw error
@@ -51,7 +53,6 @@ const BlogPostForm = ({ blogPost }) => {
     e.preventDefault()
     formToDatabase(formBody)
     setFormBody(initialForm)
-    navigate(`/locations/${location.id}`)
   }
 
   const handleReset = () => {
