@@ -18,9 +18,14 @@ const LoginPage = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    let payload = await LoginUser(formValues)
+    await LoginUser(formValues)
     let userDetail = await Client.get(`/users/${formValues.username}`)
     dispatch(getUser(userDetail.data))
+    try{
+      localStorage.setItem('userLoggedIn', userDetail.data.username)
+    } catch (error) {
+      throw error
+    }
     navigate('/')
   }
 

@@ -10,7 +10,6 @@ const ItemForm = ({ localItem }) => {
   const [formBody, setFormBody] = useState(initialForm)
   const location = useSelector(state => state.locations.location)
   const user = useSelector(state => state.user.user)
-  const localItemObj = useSelector(state => state.localObj.localObj)
   const navigate = useNavigate()
 
   useEffect(() => {

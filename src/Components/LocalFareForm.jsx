@@ -10,7 +10,6 @@ const LocalFareForm = ({ localFare }) => {
   const [formBody, setFormBody] = useState(initialForm)
   const location = useSelector(state => state.locations.location)
   const user = useSelector(state => state.user.user)
-  const localFareObj = useSelector(state => state.localObj.localObj)
   const navigate = useNavigate()
 
   

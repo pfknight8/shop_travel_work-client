@@ -9,9 +9,24 @@ import LocationDetails from './Pages/LocationDetails';
 import LocalFareDetails from './Pages/LocalFareDetails';
 import ItemDetails from './Pages/ItemDetails';
 import './Styles/App.css';
+import Client from './Services/api';
+import { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux'
+import { getUser } from "./store/reducers/userSlice"
 
 function App() {
-  //
+  const user = useSelector(state => state.user.user)
+  const dispatch = useDispatch()
+  const getUserData = async (loggedUser) => {
+    let userDetail = await Client.get(`/users/${loggedUser}`)
+    dispatch(getUser(userDetail.data))
+  }
+  useEffect(() => {
+    const loggedUser = localStorage.getItem("userLoggedIn")
+    if (loggedUser && !user.id) {
+      getUserData(loggedUser)
+    }
+  }, [])
   
   return (
     <div id="App">
