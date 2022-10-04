@@ -11,7 +11,7 @@ const BlogPostDetails = () => {
 
   const deleteObj = async () => {
     try {
-      let res = await Client.delete(`/api/locations/posts/${blogPost.id}`)
+      await Client.delete(`/locations/posts/${blogPost.id}`)
       navigate(`/`)
     } catch (error) {
       alert("Unable to delete! Only content owners are able to delete.")

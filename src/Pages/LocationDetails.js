@@ -27,7 +27,7 @@ const LocationDetails = () => {
   const handleLocalFares = async (location) => {
     setLocalFares([])
     try{
-      let res = await Client.get(`/api/localfare/view?id=${location.id}`)
+      let res = await Client.get(`/localfare/view?id=${location.id}`)
       setLocalFares(res.data)
     } catch (error) {
       throw error
@@ -36,7 +36,7 @@ const LocationDetails = () => {
   const handleLocalItems = async (location) => {
     setLocalItems([])
     try{
-      let res = await Client.get(`/api/localitem/view?id=${location.id}`)
+      let res = await Client.get(`/localitem/view?id=${location.id}`)
       setLocalItems(res.data)
     } catch (error) {
       throw error
@@ -45,7 +45,7 @@ const LocationDetails = () => {
   const handleLocalPosts = async (location) => {
     setLocalBlogPosts([])
     try{
-      let res = await Client.get(`/api/locations/post/view?id=${location.id}`)
+      let res = await Client.get(`/locations/post/view?id=${location.id}`)
       setLocalBlogPosts(res.data)
     } catch (error) {
       throw error

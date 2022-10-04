@@ -11,7 +11,7 @@ const LocalFareDetails = () => {
 
   const deleteObj = async () => {
     try {
-      let res = await Client.delete(`/api/localfare/${localFare.id}`)
+      await Client.delete(`/localfare/${localFare.id}`)
       navigate(`/`)
     } catch (error) {
       alert("Unable to delete! Only content owners are able to delete.")

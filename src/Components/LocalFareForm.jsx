@@ -35,7 +35,7 @@ const LocalFareForm = ({ localFare }) => {
     if (Object.keys(initialForm).length === 0) {
       console.log(formBody)
       try {
-        await Client.post(`/api/localfare` , formBody)
+        await Client.post(`/localfare` , formBody)
         alert("submitted!")
         navigate(`/`)
       } catch (error) {
@@ -44,7 +44,7 @@ const LocalFareForm = ({ localFare }) => {
       }
     } else {
       try {
-        await Client.put(`/api/localfare/${localFare.id}`, formBody)
+        await Client.put(`/localfare/${localFare.id}`, formBody)
         navigate(`/locations/${location.id}`)
       } catch (error) {
         alert('You must be the content owner to do that!')

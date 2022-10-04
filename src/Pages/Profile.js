@@ -1,4 +1,3 @@
-import { useEffect } from "react"
 import { useSelector } from "react-redux"
 import { useNavigate } from "react-router-dom"
 import { LogOut } from "../Services/auth"
@@ -8,13 +7,9 @@ const Profile = () => {
   const user = useSelector(state => state.user.user)
   const navigate = useNavigate()
 
-  useEffect(() => {
-    //
-  }, [])
-
   const deleteObj = async () => {
     try {
-      await Client.delete(`/api/users/${user.username}`)
+      await Client.delete(`/users/${user.username}`)
       LogOut()
       navigate(`/`)
     } catch (error) {
@@ -35,7 +30,7 @@ const Profile = () => {
       <p>First name: {user?.first_name}</p>
       <p>Last name: {user?.last_name}</p>
       <div className="btn-holder">
-        {/* <button id='delete-user' onClick={handleDelete}>Delete User</button> */}
+        <button id='delete-user' onClick={handleDelete}>Delete User</button>
       </div>
     </div>
   )

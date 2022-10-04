@@ -1,6 +1,6 @@
 import Axios from "axios"
 
-export const BASE_URL = 'http://localhost:8000'
+export const BASE_URL = 'https://ancient-eyrie-35166.herokuapp.com'
 
 const Client = Axios.create({ baseURL: BASE_URL })
 
@@ -24,7 +24,7 @@ Client.interceptors.response.use(response => response, error => {
       const tokenPieces = JSON.parse(atob(refreshToken.split('.')[1]))
       const now = Math.ceil(Date.now()/1000)
       if (tokenPieces.exp > now) {
-        return Client.post('/api/token/refresh', {refresh: refreshToken}).then((res) => {
+        return Client.post('/token/refresh', {refresh: refreshToken}).then((res) => {
           localStorage.setItem('token', res.data.access)
           localStorage.setItem('refresh', res.data.refresh)
           Client.defaults.headers['Authorization'] = "Bearer" + res.data.access

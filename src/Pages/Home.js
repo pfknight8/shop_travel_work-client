@@ -17,7 +17,7 @@ const Home = (props) => {
 
   const handleGetLocations = async (e) => {
     e.preventDefault()
-    let res = await Client.get('/api/locations')
+    let res = await Client.get('/')
     setLocations(res.data)
     setLocationsObtained(true)
   }

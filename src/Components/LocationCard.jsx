@@ -1,5 +1,3 @@
-import { connect } from "react-redux"
-
 const LocationCard = ({location, handleLocationSelect}) => {
   return (
     <div className="location-card">

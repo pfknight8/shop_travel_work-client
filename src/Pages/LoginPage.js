@@ -1,6 +1,6 @@
 import { useState } from "react"
 import { useNavigate } from "react-router-dom"
-import { useSelector, useDispatch } from "react-redux"
+import { useDispatch } from "react-redux"
 import { getUser } from "../store/reducers/userSlice"
 import { LoginUser } from "../Services/auth"
 import Client from "../Services/api"
@@ -19,7 +19,7 @@ const LoginPage = () => {
   const handleSubmit = async (e) => {
     e.preventDefault()
     let payload = await LoginUser(formValues)
-    let userDetail = await Client.get(`/api/users/${formValues.username}`)
+    let userDetail = await Client.get(`/users/${formValues.username}`)
     dispatch(getUser(userDetail.data))
     navigate('/')
   }
