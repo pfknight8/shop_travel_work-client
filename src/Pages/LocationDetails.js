@@ -12,6 +12,7 @@ import Client from '../Services/api'
 
 const LocationDetails = () => {
   const location = useSelector(state => state.locations.location)
+  const user = useSelector(state => state.user.user)
   const [localBlogPosts, setLocalBlogPosts] = useState([])
   const [localFares, setLocalFares] = useState([])
   const [localItems, setLocalItems] = useState([])
@@ -75,7 +76,7 @@ const LocationDetails = () => {
         <div className='card-title'>
           <button className="toggle-btn" onClick={() => {togglePostBtn(!postBtn); togglePostFormBtn(false)}}>{postBtn ? 'v' : '>'}</button>
           <p className='title-name'>Posts</p>
-          {postBtn && (<button className='add-something' onClick={() => togglePostFormBtn(!postFormBtn)}>{postFormBtn ? 'Cancel' : 'Add Post'}</button>)}
+          {(postBtn && user.id) ? (<button className='add-something' onClick={() => togglePostFormBtn(!postFormBtn)}>{postFormBtn ? 'Cancel' : 'Add Post'}</button>) : null}
         </div>
         <div className='form-holder'>
           {postFormBtn && <BlogPostForm blogPost={{}}/>}
@@ -88,7 +89,7 @@ const LocationDetails = () => {
         <div className='card-title'>
           <button className="toggle-btn" onClick={() => {toggleFareBtn(!fareBtn); toggleFareFormBtn(false)}}>{fareBtn ? 'v' : '>'}</button>
           <p className='title-name'>Local Fares</p>
-          {fareBtn && (<button className='add-something' onClick={() => toggleFareFormBtn(!fareFormBtn)}>{fareFormBtn ? 'Cancel' : 'Add Local Fare'}</button>)}
+          {(fareBtn && user.id) ? (<button className='add-something' onClick={() => toggleFareFormBtn(!fareFormBtn)}>{fareFormBtn ? 'Cancel' : 'Add Local Fare'}</button>) : null}
         </div>
         <div className='form-holder'>
           {fareFormBtn && <LocalFareForm localFare={{}}/>}
@@ -101,7 +102,7 @@ const LocationDetails = () => {
         <div className='card-title'>
           <button className="toggle-btn" onClick={() => {toggleItemBtn(!itemBtn); toggleItemFormBtn(false);}}>{itemBtn ? 'v' : '>'}</button>
           <p className='title-name'>Items Procured Locally</p>
-          {itemBtn && (<button className='add-something' onClick={() => toggleItemFormBtn(!itemFormBtn)}>{itemFormBtn ? 'Cancel' : 'Add Local Item'}</button>)}
+          {(itemBtn && user.id) ? (<button className='add-something' onClick={() => toggleItemFormBtn(!itemFormBtn)}>{itemFormBtn ? 'Cancel' : 'Add Local Item'}</button>) : null}
         </div>
         <div className='form-holder'>
           {itemFormBtn && <ItemForm localItem={{}} />}

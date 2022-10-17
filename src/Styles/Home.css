@@ -52,3 +52,7 @@
   width: 50vw;
   min-width: 225px;
 }
+
+.location-image {
+  max-width: 300px;
+}

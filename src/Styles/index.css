@@ -1,10 +1,16 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poiret+One&display=swap');
 * {
   margin: 0;
   font-family: 'Montserrat', sans-serif;
+  /* font-family: 'Poiret One', cursive; */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: #082321;
+}
+
+h1 {
+  font-family: 'Poiret One', cursive;
 }
 
 body {
